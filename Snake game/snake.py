@@ -2,14 +2,14 @@ import pygame
 import random
 import pygame.mixer
 
-#TODO add music files later
+# @TODO add music files later
 
-#TODO pygame.mixer.init() 
+# @TODO pygame.mixer.init() 
 
 
-#TODO bg_music = pygame.mixer.music.load('bg.wav')
-#TODO eating_sound = pygame.mixer.Sound('eat.wav')
-#TODO game_over_sound = pygame.mixer.Sound('over.wav')
+# @TODO bg_music = pygame.mixer.music.load('bg.wav')
+# @TODO eating_sound = pygame.mixer.Sound('eat.wav')
+# @TODO game_over_sound = pygame.mixer.Sound('over.wav')
 
 pygame.init()
 
@@ -67,7 +67,7 @@ def message(msg, color):
 		dis.blit(mesg, [x,y])
 
 def gameLoop():
-	#TODO pygame.mixer.music.play(-1)
+	# @TODO pygame.mixer.music.play(-1)
 	message("Use the arrow keys to move the snake. Don't suck", white)
 	pygame.display.update()
 
@@ -92,7 +92,7 @@ def gameLoop():
 			dis.fill(blue)
 			message("You fucking suck! Press C to try again or Q to quit like a little Bitch", red)
 			Your_score(Length_of_snake - 1)
-			#TODO game_over_sound.play()
+			# @TODO game_over_sound.play()
 			pygame.display.update()
 			for event in pygame.event.get():
 				if event.type == pygame.KEYDOWN:
@@ -145,7 +145,7 @@ def gameLoop():
 			foodx = round(random.randrange(0, disp_width - snake_block) / 10.0) * 10.0
 			foody = round(random.randrange(0, disp_height - snake_block) / 10.0) * 10.0
 			Length_of_snake += 1
-			#TODO eating_sound.play()
+			# @TODO eating_sound.play()
 		
 		clock.tick(snake_speed)
 		
