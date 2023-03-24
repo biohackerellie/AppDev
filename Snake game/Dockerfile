@@ -1,11 +1,21 @@
-FROM python:3.9-slim-buster
+FROM ubuntu:latest
 
-WORKDIR /app
 
-COPY requirements.txt .
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    xvfb \
+    x11vnc \
+    novnc \
+    websockify \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . . 
+RUN pip3 install pygame
 
-CMD [ "python", "./snake.py"]
+EXPOSE 6080 5900
+
+COPY snake.py /
+
+ENTRYPOINT ["xvfb-run", "-a", "python3", "snake.py"]
