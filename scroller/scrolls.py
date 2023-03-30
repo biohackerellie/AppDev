@@ -19,6 +19,10 @@ MAGENTA = (255, 0, 255)
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("poop mah goop")
 
+#set speed
+
+clock = pygame.time.Clock()
+
 
 #load assetts
 
@@ -57,6 +61,8 @@ while running:
 				jump_count = 10
 		
 		#Draw the game
+		
 		screen.fill(bg)
 		screen.blit(player_img, (player_x, player_y))
 		pygame.display.flip()
+		clock.tick(40)
