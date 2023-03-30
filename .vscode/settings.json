@@ -1,3 +1,8 @@
 {
+<<<<<<< HEAD
   "omnisharp.useModernNet": false
+=======
+	"todo-tree.tree.scanMode": "open files",
+	"editor.detectIndentation": false
+>>>>>>> 604d82ce20ae3780e8cbc8333c44a61e1db77a2e
 }

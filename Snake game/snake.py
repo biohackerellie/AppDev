@@ -2,14 +2,23 @@ import pygame
 import random
 import pygame.mixer
 
-# @TODO add music files later
+# TODO add music files later
 
+<<<<<<< HEAD
 pygame.mixer.init() 
 
 
 # @TODO bg_music = pygame.mixer.music.load('bg.wav')
 eating_sound = pygame.mixer.Sound('Snake game\eat.wav')
 # @TODO game_over_sound = pygame.mixer.Sound('over.wav')
+=======
+# TODO pygame.mixer.init() 
+
+
+# TODO bg_music = pygame.mixer.music.load('bg.wav')
+# TODO eating_sound = pygame.mixer.Sound('eat.wav')
+# TODO game_over_sound = pygame.mixer.Sound('over.wav')
+>>>>>>> 604d82ce20ae3780e8cbc8333c44a61e1db77a2e
 
 pygame.init()
 
@@ -25,6 +34,9 @@ disp_height = 400
 
 dis = pygame.display.set_mode((disp_width, disp_height))
 pygame.display.set_caption('Snake Game')
+
+last_food_time = pygame.time.get_ticks()
+timeout = 30000
 
 clock = pygame.time.Clock()
 
@@ -67,10 +79,10 @@ def message(msg, color):
 		dis.blit(mesg, [x,y])
 
 def gameLoop():
-	# @TODO pygame.mixer.music.play(-1)
+	# TODO pygame.mixer.music.play(-1)
 	message("Use the arrow keys to move the snake. Don't suck", white)
 	pygame.display.update()
-
+	last_food_time = pygame.time.get_ticks()
 	game_over = False
 	game_close = False
 
@@ -90,9 +102,9 @@ def gameLoop():
 		
 		while game_close == True:
 			dis.fill(blue)
-			message("You fucking suck! Press C to try again or Q to quit like a little Bitch", red)
+			message("You fucking suck! Press C to try again or Q to quit like a little bitch", red)
 			Your_score(Length_of_snake - 1)
-			# @TODO game_over_sound.play()
+			# TODO game_over_sound.play()
 			pygame.display.update()
 			for event in pygame.event.get():
 				if event.type == pygame.KEYDOWN:
@@ -145,7 +157,15 @@ def gameLoop():
 			foodx = round(random.randrange(0, disp_width - snake_block) / 10.0) * 10.0
 			foody = round(random.randrange(0, disp_height - snake_block) / 10.0) * 10.0
 			Length_of_snake += 1
+<<<<<<< HEAD
 			eating_sound.play()
+=======
+			# TODO eating_sound.play()
+			last_food_time = pygame.time.get_ticks()
+		
+		if pygame.time.get_ticks() - last_food_time > timeout:
+			game_close = True
+>>>>>>> 604d82ce20ae3780e8cbc8333c44a61e1db77a2e
 		
 		clock.tick(snake_speed)
 		
