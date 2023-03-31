@@ -1,3 +1,3 @@
-# GameDev stuff
+# AppDev stuff
 
-Slowly learning gamedev okkkkkkkkk
+As I slowly learn Programming, I'll add my projects in this repo :) 
