@@ -4,21 +4,12 @@ import pygame.mixer
 
 # TODO add music files later
 
-<<<<<<< HEAD
 pygame.mixer.init() 
 
 
 # @TODO bg_music = pygame.mixer.music.load('bg.wav')
 eating_sound = pygame.mixer.Sound('Snake game\eat.wav')
 # @TODO game_over_sound = pygame.mixer.Sound('over.wav')
-=======
-# TODO pygame.mixer.init() 
-
-
-# TODO bg_music = pygame.mixer.music.load('bg.wav')
-# TODO eating_sound = pygame.mixer.Sound('eat.wav')
-# TODO game_over_sound = pygame.mixer.Sound('over.wav')
->>>>>>> 604d82ce20ae3780e8cbc8333c44a61e1db77a2e
 
 pygame.init()
 
@@ -157,15 +148,7 @@ def gameLoop():
 			foodx = round(random.randrange(0, disp_width - snake_block) / 10.0) * 10.0
 			foody = round(random.randrange(0, disp_height - snake_block) / 10.0) * 10.0
 			Length_of_snake += 1
-<<<<<<< HEAD
 			eating_sound.play()
-=======
-			# TODO eating_sound.play()
-			last_food_time = pygame.time.get_ticks()
-		
-		if pygame.time.get_ticks() - last_food_time > timeout:
-			game_close = True
->>>>>>> 604d82ce20ae3780e8cbc8333c44a61e1db77a2e
 		
 		clock.tick(snake_speed)
 		
