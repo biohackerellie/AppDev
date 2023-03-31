@@ -54,7 +54,8 @@ while running:
             print(event)
         elif event.type == MOUSEMOTION and drawing:
             end = event.pos
-            size= end[0] - start [0], end[1] - start[1]
+            size= end[0] - start [0], end[1] - start[1] #or end[0] - start [0], end[-1] - start[-1]
+
             print(event)
         screen.fill(GRAY)
         for rect in rect_list:
