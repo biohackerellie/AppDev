@@ -7,6 +7,7 @@ Set-Location $PSScriptRoot
 
 
 
+
 #--------------Functions-------------------------------
 
 
@@ -118,23 +119,18 @@ function disableButton_Click(){
 Add-type -AssemblyName System.Windows.Forms | Where-Object { $_ -ne 0 } | Out-Null
 Add-type -AssemblyName System.Drawing | Where-Object { $_ -ne 0 } | Out-Null
 
-
-$iconFilePath = Join-Path $PSScriptRoot 'logo.ico'
-$icon = [System.Drawing.Icon]::ExtractAssociatedIcon($iconFilePath)
 $form = New-Object System.Windows.Forms.Form
-$form.Icon = $icon
-$form.Text = "AD User Management"
+
+$form.Text = "Lazy AD Tools"
+
 $form.Width = 500
-$form.Height = 500
+$form.Height = 350
 
 $form.StartPosition = "CenterScreen"
-$form.BackColor = [System.Drawing.Color]::DimGray
+$form.BackColor = [System.Drawing.Color]::Transparent
 $form.FormBorderStyle = 'Fixed3D'
 $form.Font = New-Object System.Drawing.Font("Segoe UI", 11)
 
-
-
-# Add a custom title bar control
 
 
 # Add Text Box for User
@@ -150,7 +146,7 @@ $userTextBox.Width = 150
 $userTextBox.Anchor = [System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right
 
 
-# Function Selection
+#-------------Function Selection---------
 
 $selectLabel = New-Object System.Windows.Forms.Label
 $selectLabel.text = "Select User Control Option: "
@@ -158,12 +154,10 @@ $selectLabel.Location = New-Object System.Drawing.Point(20,100)
 $selectLabel.AutoSize = $true
 
 
-
-
 $accessButton = New-Object System.Windows.Forms.Button
 $accessButton.text = "Door Access"
 $accessButton.Location = New-Object System.Drawing.Point(20, 130)
-$accessButton.Width = 110
+$accessButton.Width = 120
 $accessButton.Add_Click({
 	if ($buildingLabel.Visible -eq $false) {
 		$buildingLabel.Visible = $true
@@ -198,8 +192,8 @@ $accessButton.Add_Click({
 
 $passButton = New-Object System.Windows.Forms.Button
 $passButton.text = "Password"
-$passButton.Location = New-Object System.Drawing.Point(150, 130)
-$passButton.Width = 110
+$passButton.Location = New-Object System.Drawing.Point(180, 130)
+$passButton.Width = 120
 $passButton.Add_Click({
 	if ($passwordLabel.Visible -eq $false) {
 		$buildingLabel.Visible = $false
@@ -231,8 +225,8 @@ $passButton.Add_Click({
 
 $enableButton = New-Object System.Windows.Forms.Button
 $enableButton.text = "Disable/Enable"
-$enableButton.Location = New-Object System.Drawing.Point(250, 130)
-$enableButton.Width = 110
+$enableButton.Location = New-Object System.Drawing.Point(340, 130)
+$enableButton.Width = 120
 $enableButton.Add_Click({
 	if ($statusButton.Visible -eq $false) {
 		$buildingLabel.Visible = $false
@@ -310,8 +304,8 @@ $form.AcceptButton = $addButton
 # Add Remove access checkbox
 $removeAccessCheckBox = New-Object System.Windows.Forms.Checkbox
 $removeAccessCheckBox.Visible = $false
-$removeAccessCheckBox.Text= "Check box to remove`n access instead of add"
-$removeAccessCheckBox.Location = New-Object System.Drawing.Point(300, 270)
+$removeAccessCheckBox.Text= "Check box to remove`naccess instead of add"
+$removeAccessCheckBox.Location = New-Object System.Drawing.Point(300, 250)
 $removeAccessCheckBox.AutoSize = $true
 
 # Add Current Groups Button
@@ -343,12 +337,12 @@ $tierDefButton.Add_Click({TierDefButton_Click})
 $passwordLabel = New-Object System.Windows.Forms.Label
 $passwordLabel.Visible = $false
 $passwordLabel.Text = "Enter the new password"
-$passwordLabel.Location = New-Object System.Drawing.Point(150,160)
+$passwordLabel.Location = New-Object System.Drawing.Point(161,160)
 $passwordLabel.Autosize = $true
 
 
 $passwordTextBox = New-Object System.Windows.Forms.TextBox
-$passwordTextBox.Location = New-Object System.Drawing.Point(150, 180)
+$passwordTextBox.Location = New-Object System.Drawing.Point(165, 185)
 $passwordTextBox.Width = 150
 $passwordTextBox.Anchor = [System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right
 $passwordTextBox.Visible = $false
@@ -357,14 +351,14 @@ $passwordTextBox.Visible = $false
 $passwordButton = New-Object System.Windows.Forms.Button
 $passwordButton.Visible = $false
 $passwordButton.Text = "Reset Password"
-$passwordButton.Location = New-Object System.Drawing.Point(150,210)
+$passwordButton.Location = New-Object System.Drawing.Point(165,220)
 $passwordButton.Width = 150
 $passwordButton.Add_Click({passwordButton_Click})
 
 $passwordCheckBox = New-Object System.Windows.Forms.Checkbox
 $passwordCheckBox.Visible = $false
-$passwordCheckBox.Text= "Require user to reset password on next login"
-$passwordCheckBox.Location = New-Object System.Drawing.Point(150, 230)
+$passwordCheckBox.Text= "Require user to reset`npassword on next login"
+$passwordCheckBox.Location = New-Object System.Drawing.Point(150, 240)
 $passwordCheckBox.AutoSize = $true
 
 
@@ -375,13 +369,13 @@ $passwordCheckBox.AutoSize = $true
 $disableLabel = New-Object System.Windows.Forms.Label
 $disableLabel.Visible = $false
 $disableLabel.Text = "Disable/Enable Account"
-$disableLabel.Location = New-Object System.Drawing.Point(150,160)
+$disableLabel.Location = New-Object System.Drawing.Point(168,160)
 $disableLabel.Autosize = $true
 
 
 $statusButton = New-Object System.Windows.Forms.Button
 $statusButton.Text = "Account Status"
-$statusButton.Location = New-Object System.Drawing.Point(20, 180)
+$statusButton.Location = New-Object System.Drawing.Point(90, 190)
 $statusButton.width = 150
 $statusButton.Add_Click({statusButton_Click})
 $statusButton.Visible = $false
@@ -390,7 +384,7 @@ $statusButton.Visible = $false
 $disableButton = New-Object System.Windows.Forms.Button
 $disableButton.Visible = $false
 $disableButton.Text = "Disable/Enable"
-$disableButton.Location = New-Object System.Drawing.Point(150,180)
+$disableButton.Location = New-Object System.Drawing.Point(255,190)
 $disableButton.Width = 150
 $disableButton.Add_Click({disableButton_Click})
 
@@ -424,13 +418,60 @@ $form.Controls.Add($passwordTextBox)
 $form.Controls.Add($passwordButton)
 $form.Controls.Add($passButton)
 $form.Controls.Add($passwordCheckBox)
+#Credentials popup
+$form.add_Load({
+	$popupForm = New-Object System.Windows.Forms.Form
+	$popupForm.Text = "Enter Credentials"
+	$popupForm.Width = 300
+	$popupForm.Height = 200
+	$popupForm.StartPosition = "CenterScreen"
+	$popupForm.FormBorderStyle = 'Fixed3D'
 
+	# Add Text Boxes for Credentials
+	$usernameLabel = New-Object System.Windows.Forms.Label
+	$usernameLabel.Text = "Username:"
+	$usernameLabel.Location = New-Object System.Drawing.Point(20, 20)
+	$usernameLabel.AutoSize = $true
+	$usernameTextBox = New-Object System.Windows.Forms.TextBox
+	$usernameTextBox.Location = New-Object System.Drawing.Point(100, 20)
+	$usernameTextBox.Width = 150
 
+	$passwordLabel = New-Object System.Windows.Forms.Label
+	$passwordLabel.Text = "Password:"
+	$passwordLabel.Location = New-Object System.Drawing.Point(20, 50)
+	$passwordLabel.AutoSize = $true
+	$passwordTextBox = New-Object System.Windows.Forms.TextBox
+	$passwordTextBox.PasswordChar = '*'
+	$passwordTextBox.Location = New-Object System.Drawing.Point(100, 50)
+	$passwordTextBox.Width = 150
 
+	$okButton = New-Object System.Windows.Forms.Button
+	$okButton.Text = "OK"
+	$okButton.DialogResult = [System.Windows.Forms.DialogResult]::OK
+	$okButton.Location = New-Object System.Drawing.Point(100, 90)
+	$okButton.Anchor = [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right
 
+	$popupForm.AcceptButton = $okButton
 
+	$popupForm.Controls.Add($usernameLabel)
+	$popupForm.Controls.Add($usernameTextBox)
+	$popupForm.Controls.Add($passwordLabel)
+	$popupForm.Controls.Add($passwordTextBox)
+	$popupForm.Controls.Add($okButton)
 
-
+	$result = $popupForm.ShowDialog()
+	if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
+		if ($passwordTextBox.Text -eq '') {
+			[System.Windows.Forms.MessageBox]::Show('Please enter a password.', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+			return
+		}
+	
+		$username = $usernameTextBox.Text
+		$securePassword = ConvertTo-SecureString $passwordTextBox.Text -AsPlainText -Force
+		$creds = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
+		
+	}
+})
 
 
 
